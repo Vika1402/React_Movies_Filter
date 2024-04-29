@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import MovieList from './components/MovieList';
+import Filter from './components/Filter';
+import moviesData from './data/movies_Data';
+
+
 
 function App() {
+  const [movies, setMovies] = useState(moviesData);
+
+  const filterMovies = (filters) => {
+    let filteredMovies = [...moviesData];
+
+    if (filters.language !== 'All') {
+      filteredMovies = filteredMovies.filter(movie => movie.movielanguages.includes(filters.language));
+    }
+
+    if (filters.country !== 'All') {
+      filteredMovies = filteredMovies.filter(movie => movie.moviecountries.includes(filters.country));
+    }
+
+    if (filters.genre !== 'All') {
+      filteredMovies = filteredMovies.filter(movie => movie.moviegenres.includes(filters.genre));
+    }
+
+    setMovies(filteredMovies);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Movie App</h1>
+      <Filter filterMovies={filterMovies} />
+      <MovieList movies={movies} />
     </div>
   );
 }
 
 export default App;
+
