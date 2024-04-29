@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div>
-      <h1>Movie App</h1>
+      <h1 style={{textAlign:'center',padding:'20px'}}>Movie App</h1>
       <Filter filterMovies={filterMovies} />
       <MovieList movies={movies} />
     </div>

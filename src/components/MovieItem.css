@@ -1,25 +1,5 @@
-/* MovieItem.css */
-.movie-item {
-  display: flex;
-  background: rgba(246, 241, 241, 0.15);
-  backdrop-filter: blur(5px);
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.movie-item img {
-  width: 150px;
-  height: auto;
-  margin-right: 20px;
-}
-
-.movie-details {
-  color: white;
-}
-
-
-
-.movie-details p {
-  margin: 5px 0;
+.Is-Card{
+  width: 370px !important;
+  box-shadow: 2px 2px 4px 2px rgba(6, 86, 245, 0.5) !important;
+  
 }

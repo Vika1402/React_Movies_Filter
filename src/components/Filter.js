@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
+import './Filter.css'; // Import your CSS file for styling
 
-const languageOptions = [
-  'All', 'Hindi', 'Malayalam', 'Kannada', 'Tamil', 'English', 'Japanese', 'Chinese', 'Spanish', 'Korean', 'Telugu'
-];
+const languageOptions = ['All', 'Hindi', 'Malayalam', 'Kannada', 'Tamil', 'English', 'Japanese', 'Chinese', 'Spanish', 'Korean', 'Telugu'];
 
-const countryOptions = [
-  'All', 'Australia', 'Canada', 'Germany', 'France', 'United Kingdom', 'Ireland', 'India', 'Norway', 'United States', 'United Arab Emirates', 'Bahrain', 'Kuwait', 'Oman', 'Qatar', 'Saudi Arabia', 'Singapore'
-];
+const countryOptions = ['All', 'Australia', 'Canada', 'Germany', 'France', 'United Kingdom', 'Ireland', 'India', 'Norway', 'United States', 'United Arab Emirates', 'Bahrain', 'Kuwait', 'Oman', 'Qatar', 'Saudi Arabia', 'Singapore'];
 
-const genreOptions = [
-  'All', 'Action', 'Drama', 'Sport', 'Biography', 'History', 'Sci-Fi', 'Thriller'
-];
+const genreOptions = ['All', 'Action', 'Drama', 'Sport', 'Biography', 'History', 'Sci-Fi', 'Thriller'];
 
 function Filter({ filterMovies }) {
   const [filters, setFilters] = useState({
@@ -29,38 +24,40 @@ function Filter({ filterMovies }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Filters:', filters); // Debugging
+    console.log('Filters:', filters); 
     filterMovies(filters);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Language:
-        <select name="language" value={filters.language} onChange={handleChange}>
-          {languageOptions.map(option => (
-            <option key={option} value={option}>{option}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        Country:
-        <select name="country" value={filters.country} onChange={handleChange}>
-          {countryOptions.map(option => (
-            <option key={option} value={option}>{option}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        Genre:
-        <select name="genre" value={filters.genre} onChange={handleChange}>
-          {genreOptions.map(option => (
-            <option key={option} value={option}>{option}</option>
-          ))}
-        </select>
-      </label>
-      <button type="submit">Filter</button>
-    </form>
+    <nav className="navbar">
+      <form onSubmit={handleSubmit} className="filter-form">
+        <label>
+          Language:
+          <select name="language" value={filters.language} onChange={handleChange}>
+            {languageOptions.map(option => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Country:
+          <select name="country" value={filters.country} onChange={handleChange}>
+            {countryOptions.map(option => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Genre:
+          <select name="genre" value={filters.genre} onChange={handleChange}>
+            {genreOptions.map(option => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+        </label>
+        <button type="submit">Filter</button>
+      </form>
+    </nav>
   );
 }
 
